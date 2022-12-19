@@ -1,0 +1,44 @@
+{
+  "expo": {
+    "androidStatusBar": {
+      "barStyle": "light-content",
+      "backgroundColor": "#000000"
+    },
+    "name": "GPA Cheby",
+    "slug": "aa",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "https://iili.io/HxE6rjs.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "https://iili.io/HxEPDfR.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "http://www.gpacheby.org/wp-content/uploads/2018/09/cheby-logo-1024x549.jpg",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.nubisub.projectppk2"
+    },
+    "web": {
+      "favicon": "http://www.gpacheby.org/wp-content/uploads/2018/09/cheby-logo-1024x549.jpg"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "baab70bc-def7-4d01-829c-c505703a3666"
+      }
+    },
+    "owner": "muhammadhanief"
+  }
+}
