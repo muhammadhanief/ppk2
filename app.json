@@ -4,6 +4,7 @@
       "barStyle": "light-content",
       "backgroundColor": "#000000"
     },
+
     "name": "GPA Cheby",
     "slug": "aa",
     "version": "1.0.0",
@@ -18,9 +19,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
