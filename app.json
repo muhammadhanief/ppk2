@@ -4,7 +4,6 @@
       "barStyle": "light-content",
       "backgroundColor": "#000000"
     },
-
     "name": "GPA Cheby",
     "slug": "aa",
     "version": "1.0.0",
@@ -21,11 +20,12 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.nubisub.projectppk2"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "http://www.gpacheby.org/wp-content/uploads/2018/09/cheby-logo-1024x549.jpg",
+        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.nubisub.projectppk2"

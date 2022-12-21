@@ -30,6 +30,12 @@ function DetailsScreen({ route, navigation }) {
         "<p> Keterangan : " +
         response.keterangan +
         "</p>" +
+        "Gambar : " +
+        "<br> <br>" +
+        '<img src="' +
+        "http://sialumni.masuk.id/images/barang/1/" +
+        response.gambar +
+        '" alt="Girl in a jacket" width="500" height="600"></img>' +
         "<br>" +
         "</body></html>";
       setData(response);

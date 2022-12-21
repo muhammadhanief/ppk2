@@ -89,6 +89,7 @@ function ProfileTab({ navigation }) {
           rounded
           source={{
             uri: "https://iili.io/HxEAzJf.jpg",
+            // uri: "http://sialumni.masuk.id/images/barang/1/coba.png",
           }}
         />
       </View>

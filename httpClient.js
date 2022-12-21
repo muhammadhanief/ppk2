@@ -1,5 +1,6 @@
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import * as FileSystem from "expo-file-system";
 
 const API_LINK = process.env.VITE_API_LINK;
 const httpClient = axios.create();
@@ -123,6 +124,7 @@ httpClient.createKonten = function (konten) {
     method: "post",
     // url: "https://beppk.vercel.app/api/konten",
     url: "https://sialumni.masuk.id/api/tambah-barang",
+    uploadType: FileSystem.FileSystemUploadType.MULTIPART,
     data: konten,
   }).then((serverResponse) => {
     return serverResponse.data;

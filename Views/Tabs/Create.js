@@ -1,15 +1,24 @@
-import { SafeAreaView, Text, TextInput, ScrollView, View } from "react-native";
+import {
+  SafeAreaView,
+  Text,
+  TextInput,
+  ScrollView,
+  View,
+  Pressable,
+} from "react-native";
 import ProfileTab from "./Profile";
 import * as React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 const Stack = createNativeStackNavigator();
-import { StyleSheet, StatusBar } from "react-native";
+import { StyleSheet, StatusBar, Image } from "react-native";
 import QuillEditor, { QuillToolbar } from "react-native-cn-quill";
 import { createRef, useCallback, useEffect, useState } from "react";
 import { Button, Overlay } from "@rneui/themed";
 import isEmail from "validator/lib/isEmail";
 import httpClient from "../../httpClient";
 import { useFocusEffect } from "@react-navigation/native";
+import { launchCamera, launchImageLibrary } from "react-native-image-picker";
+import * as ImagePicker from "expo-image-picker";
 
 function Create({}) {
   return (
@@ -45,6 +54,56 @@ function CreateDetails(navigation) {
   const [tahun_beli, settahun_beli] = useState("");
   const [sumber_dana, setsumber_dana] = useState("");
 
+  const [imageGallery, setImageGallery] = useState(null);
+
+  const [image, setImage] = useState(null);
+  const pickImage = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
+  };
+
+  const options = {
+    title: "Select Image",
+    type: "library",
+    options: {
+      maxHeight: 200,
+      maxWidth: 200,
+      selectionLimit: 1,
+      mediaType: "photo",
+      includeBase64: true,
+      // includeExtra,
+    },
+  };
+
+  const openGallery = () => {
+    const option = {
+      mediaType: "photo",
+      quality: 1,
+    };
+    launchImageLibrary(option, (res) => {
+      if (res.didCancel) {
+        console.log("User Cancelled image picker");
+      } else if (res.errorCode) {
+        console.log(res.errorMessage);
+      } else {
+        const data = res.assets[0];
+        setImageGallery(data);
+        console.log(data);
+      }
+    });
+  };
+
   const onChangeTitle = (text) => {
     setTitle(text);
   };
@@ -79,6 +138,7 @@ function CreateDetails(navigation) {
       sumber_dana: sumber_dana,
       //   status: status,
       keterangan: keterangan,
+      // gambar: image,
     };
     httpClient.createKonten(data).then((res) => {
       setVisible(!visible);
@@ -152,6 +212,17 @@ function CreateDetails(navigation) {
             onChangeText={setketerangan}
             placeholder="Keterangan"
           />
+
+          {/* <Button title="Pick an image from camera roll" onPress={pickImage} />
+          {image && (
+            <Image
+              source={{ uri: image }}
+              style={{ width: 200, height: 200 }}
+            />
+          )} */}
+          {/* <Pressable onPress={openGallery}>
+            <Text>Open Gallery</Text>
+          </Pressable> */}
         </SafeAreaView>
       </ScrollView>
       <StatusBar style="auto" />
@@ -170,7 +241,7 @@ function CreateDetails(navigation) {
       {/* </SafeAreaView> */}
 
       <Button size="md" style={styles.button} onPress={toggleOverlay}>
-        Upload Konten
+        Upload Barang
       </Button>
       <Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
         <SafeAreaView>

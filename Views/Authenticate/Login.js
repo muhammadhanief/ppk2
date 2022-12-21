@@ -11,7 +11,6 @@ import {
 } from "react-native";
 import { Button } from "@rneui/themed";
 import logo from "../../logo.png";
-import logojuga from "../../222011686_Muhammad Hanief - Muhammad Hanief (1).png";
 import { NavigationContainer, useFocusEffect } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import httpClient from "../../httpClient";
